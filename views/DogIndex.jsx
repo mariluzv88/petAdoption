@@ -16,6 +16,11 @@ function DogIndex(props) {
                 <a href={`/dogs/${dog._id}`}>
                 <h3>{dog.name}</h3>
                 </a>
+                <a href={`/dogs/${dog._id}/edit`}>Edit This Dog Post</a>
+
+                <form action={`/dogs/${dog._id}?_method=DELETE`}method='POST'>
+                  <input type='submit' value='DELETE'/>
+                </form>
              </div>
           )
         })}

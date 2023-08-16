@@ -16,14 +16,18 @@ app.use((req,res,next)=>{
     console.log("I run for all routes")
     next()
 })
-mongoose.connect(process.env.MONGO_URI,{ useNewUrlParser: true, useUnifiedTopology:true})
+app.use(methodOverride('_method'));
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    // useCreateIndex: true
+  });
 mongoose.connection.once('open', ()=> {
     console.log('connected to mongo');
 });
 // mongoose.connection.once("open", () => {
 //     console.log("connected to mongo");
 // });
-app.use(methodOverride('_method'));
 
 //-------- routes
 // seed route
@@ -61,10 +65,12 @@ app.post('/cats', async (req,res)=>{
     }
     const NewCat = await Cat.create(req.body)
     console.log(cats)
+   
     res.redirect('/cats')
 })
 app.post('/dogs', async (req,res)=>{
    const NewDog= await Dog.create(req.body)
+   
     res.redirect('/dogs')
 })
 // new pages
@@ -74,6 +80,16 @@ app.get('/cats/new',(req ,res) =>{
 app.get('/dogs/new',(req ,res) =>{
     res.render("DogNew")
 })
+// delete
+app.delete('/dogs/:id', async(req,res)=>{
+   await Dog.findByIdAndRemove(req.params.id)
+    res.redirect('/dogs')
+})
+app.delete('/cats/:id',async(req,res)=>{
+    await Cat.findByIdAndRemove(req.params.id)
+    res.redirect('/cats')
+})
+// edit
 // put new cat/dog 
 app.put('/cats/:id', async (req,res)=>{
     if(req.body.HadFirstCheckUp === 'on'){
@@ -88,6 +104,7 @@ app.put('/dogs/:id', async (req,res)=>{
     const UpdatedDog = await Dog.findByIdAndUpdate(req.params.id, req.body)
     res.redirect(`/dogs/${req.params.id}`)
 })
+
 // show pages
 app.get('/cats/:id', async(req,res)=>{
     const eachCat = await Cat.findById(req.params.id)

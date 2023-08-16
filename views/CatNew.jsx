@@ -8,10 +8,10 @@ function CatNew() {
             <a href='/'>Home</a>
         </nav><hr/>
         <form action='/cats' method='POST'><br/>
-        Name:<input type='text' name='Name'/><br/>
-        Age:<input type='text' name='Age'/><br/>
-        HadFirstCheckUp: <input type='checkbox' name=''/><br/>
-        Description:<input type='text' name=''/><br/><br/>
+        Name:<input type='text' name='name'/><br/>
+        Age:<input type='number' name='age'/><br/>
+        HadFirstCheckUp: <input type='checkbox' name='HadFirstCheckUp'/><br/>
+        Description:<input type='text' name='description'/><br/><br/>
         <input type='submit' name='' value='Add Cat'/>
         </form>
     </div>
