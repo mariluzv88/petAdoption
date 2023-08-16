@@ -5,7 +5,7 @@ function DogShow(props) {
   return (
     <div>
         <nav>
-            <a href='/dogs'>back</a>
+            <a style={{color:'blue'}}  href='/dogs'>back</a>
         </nav>
         <h3>Dog Name:{dog.name}</h3>
         <h3>{dog.name} age:{dog.age}</h3>

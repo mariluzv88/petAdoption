@@ -5,8 +5,8 @@ function Nav() {
     <div>
         <h1>PET ADOPTION</h1>
         <hr/>
-        <a href='/dogs'>Dog List</a><br/><br/>
-        <a href='/cats'>Cat List</a>
+        <a style={{color:'purple'}}  href='/dogs'>Dog List</a><br/><br/>
+        <a  style={{color:'purple'}} href='/cats'>Cat List</a>
     </div>
   )
 }

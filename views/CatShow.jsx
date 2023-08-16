@@ -5,7 +5,7 @@ function CatShow(props) {
   return (
     <div>
         <nav>
-            <a href='/cats'>back</a>
+            <a style={{color:'blue'}} href='/cats'>back</a>
         </nav>
         <h3>Cat Name:{cat.name}</h3>
         <h3>{cat.name} age:{cat.age}</h3>

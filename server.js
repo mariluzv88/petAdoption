@@ -81,15 +81,23 @@ app.get('/dogs/new',(req ,res) =>{
     res.render("DogNew")
 })
 // delete
-app.delete('/dogs/:id', async(req,res)=>{
-   await Dog.findByIdAndRemove(req.params.id)
-    res.redirect('/dogs')
-})
 app.delete('/cats/:id',async(req,res)=>{
     await Cat.findByIdAndRemove(req.params.id)
     res.redirect('/cats')
 })
+app.delete('/dogs/:id', async(req,res)=>{
+   await Dog.findByIdAndRemove(req.params.id)
+    res.redirect('/dogs')
+})
 // edit
+app.get('/cats/:id/edit', async(req,res)=>{
+  const catPicked = await Cat.findById(req.params.id)
+  res.render('CatEdit',{cat:catPicked})
+})
+app.get('/dogs/:id/edit', async(req,res)=>{
+  const dogPicked = await Dog.findById(req.params.id)
+  res.render('DogEdit',{dog:dogPicked})
+})
 // put new cat/dog 
 app.put('/cats/:id', async (req,res)=>{
     if(req.body.HadFirstCheckUp === 'on'){

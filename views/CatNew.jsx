@@ -4,8 +4,8 @@ function CatNew() {
   return (
     <div>
         <nav>
-            <a href='/cats'>Back</a><br/><br/>
-            <a href='/'>Home</a>
+            <a style={{color:'blue'}} href='/cats'>Back</a><br/><br/>
+            <a style={{color:'orange'}} href='/'>Home</a>
         </nav><hr/>
         <form action='/cats' method='POST'><br/>
         Name:<input type='text' name='name'/><br/>
